@@ -1,0 +1,8 @@
+public class EjercicioEventos2 {
+    
+    public static void main(String[] args) {
+        VentanaEventos2 vent1 = new VentanaEventos2("Eventos Ratón");
+        vent1.setVisible(true);
+    }
+    
+}
