@@ -1,0 +1,9 @@
+public class EjercicioEventos {
+
+    public static void main(String[] args) {
+        // TODO code application logic here
+        VentanaEventos vent1 = new VentanaEventos("Eventos");
+        vent1.setVisible(true);
+    }
+    
+}
