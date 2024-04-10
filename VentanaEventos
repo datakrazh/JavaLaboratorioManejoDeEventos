@@ -1,0 +1,65 @@
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.HeadlessException;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class VentanaEventos extends JFrame{
+    JPanel panel = new JPanel();
+    JLabel e1;
+    JLabel e2;
+    JButton b1;
+    JTextField tf1;
+    
+    public VentanaEventos(String title) throws HeadlessException {
+        super(title);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        Dimension d = new Dimension(600, 500);
+        this.setSize(d);
+        this.setLocationRelativeTo(null);
+        this.getContentPane().add(panel);
+        this.panel.setLayout(null);
+        this.panel.setBackground(new Color(244,255,244));
+        
+        verEventosBoton();
+    }
+    
+    private void verEventosBoton() {
+        
+        e1 = new JLabel ("Coloca tu nombre en el Campo de Texto y da click en el botón");
+        this.panel.add(e1);
+        e1.setBounds(20, 10, 400, 40);
+        
+        b1 = new JButton ("Click aquí para un mensaje");
+        this.panel.add(b1);
+        b1.setBounds(20, 100, 400, 40);
+        
+        tf1 = new JTextField ();
+        this.panel.add(tf1);
+        tf1.setBounds(20, 200, 400, 60);
+        
+        e2 = new JLabel();
+        this.panel.add(e2);
+        e2.setBounds(20, 300, 400, 60);
+        
+        ActionListener accion_boton = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Hola");
+                e2.setText("Hola "+tf1.getText() + ", has ingresado tu nombre.");
+            }
+        };
+        b1.addActionListener(accion_boton);
+    }
+    
+}
