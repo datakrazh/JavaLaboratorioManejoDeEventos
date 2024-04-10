@@ -1,0 +1,74 @@
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.HeadlessException;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+
+public class VentanaEventos3 extends JFrame{
+    JPanel panel = new JPanel();
+    JLabel e1;
+    JLabel e2;
+    JButton bl;
+    JTextField tfl;
+    JTextArea tal;
+    
+    public VentanaEventos3(String title) throws HeadlessException {
+        super(title);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        Dimension d = new Dimension(600, 500);
+        this.setSize(d);
+        this.setLocationRelativeTo(null);
+        this.getContentPane().add(panel);
+        this.panel.setLayout(null);
+        this.panel.setBackground(new Color(244,255,244));
+        
+        verEventosTeclado();
+    }    
+
+protected void verEventosTeclado() {
+        e1 = new JLabel ("Observa las acciones del teclado");
+        this.panel.add(e1);
+        e1.setBounds(20, 10, 400, 40);
+        
+        tfl = new JTextField ();
+        this.panel.add(tfl);
+        tfl.setBounds(20, 200, 400, 60);
+
+        tal = new JTextArea ();
+        this.panel.add(tal);
+        tal.setBounds(20, 200, 400, 120);
+        
+        KeyListener l = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                tfl.setText("mouseClicked");
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                tfl.setText("mousePressed");
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if(e.getKeyChar()=='x'){
+                    tal.append("Presionaste la letra x\n");
+                }
+                if(e.getKeyChar()=='\n'){
+                    tal.append("Presionaste enter\n");
+                }
+                if(e.getKeyChar()==' '){
+                    tal.append("Presionaste espacio\n");
+                }
+                
+            }
+        };
+            
+        tfl.addKeyListener(l);
+    }
+}
