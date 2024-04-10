@@ -1,0 +1,8 @@
+public class EjercicioEventos3 {
+
+    public static void main(String[] args) {
+        VentanaEventos3 vent1 = new VentanaEventos3("Eventos del Teclado");
+        vent1.setVisible(true);
+    }
+    
+}
